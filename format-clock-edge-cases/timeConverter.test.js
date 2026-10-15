@@ -19,5 +19,13 @@ test("correctly convert midnight", function () {
 });
 
 test("preserves minutes in afternoon times", function () {
-  assert.equal(formatAs12HourClock("13:45"), "01:45 pm");
+  assert.equal(formatAs12HourClock("13:45"), "1:45 pm");
+});
+
+test("correctly converts 13:00", function () {
+  assert.equal(formatAs12HourClock("13:00"), "1:00 pm");
+});
+
+test("correctly converts 11:00", function () {
+  assert.equal(formatAs12HourClock("11:00"), "11:00 am");
 });
