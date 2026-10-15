@@ -25,3 +25,15 @@ test("classifies straight angles", () => {
   const straight = getAngleType(180);
   assert.equal(straight, "Straight angle");
 });
+test("classifies reflex angles", () => {
+  const reflex = getAngleType(270);
+  assert.equal(reflex, "Reflex angle");
+});
+test("classifies invalid negative angles", () => {
+  const invalid = getAngleType(-10);
+  assert.equal(invalid, "Invalid angle");
+});
+test("classifies angles greater than 360 as invalid", () => {
+  const invalid = getAngleType(400);
+  assert.equal(invalid, "Invalid angle");
+});
