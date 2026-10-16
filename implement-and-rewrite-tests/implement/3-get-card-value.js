@@ -24,5 +24,26 @@
 // execute the code to ensure all tests pass.
 
 export function getCardValue(card) {
-  // TODO: Implement this function
+  const suit = card.slice(-1);
+  const rank = card.slice(0, -1);
+
+  if (!["♠", "♥", "♦", "♣"].includes(suit)) {
+    throw new Error(`Expected a number followed by a suit, but got "${card}"`);
+  }
+
+  if (rank === "A") {
+    return 11;
+  }
+
+  if (rank === "J" || rank === "Q" || rank === "K") {
+    return 10;
+  }
+
+  const value = Number(rank);
+
+  if (!isNaN(value) && value >= 2 && value <= 10) {
+    return value;
+  }
+
+  throw new Error(`Expected a number followed by a suit, but got "${card}"`);
 }
