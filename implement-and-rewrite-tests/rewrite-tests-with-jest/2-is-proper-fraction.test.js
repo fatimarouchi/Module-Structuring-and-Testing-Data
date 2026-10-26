@@ -22,8 +22,8 @@ test("should return true when numerator is zero", () => {
   expect(isProperFraction(0, 5)).toEqual(true);
 });
 
-test("should return false for negative numerator and denominator", () => {
-  expect(isProperFraction(-1, -2)).toEqual(false);
+test("should return true when both numerator and denominator are negative and form a proper fraction", () => {
+  expect(isProperFraction(-1, -2)).toEqual(true);
 });
 
 test("should return true for negative numerator and positive denominator", () => {
