@@ -1,15 +1,10 @@
 // implement a function countChar that counts the number of times a character occurs in a string
 import { countChar } from "./count.js";
-// Given a string `str` and a single character `char` to search for,
-// When the countChar function is called with these inputs,
-// Then it should:
 
 // Scenario: Multiple Occurrences
-// Given the input string `str`,
-// And a character `char` that occurs one or more times in `str` (e.g., 'a' in 'aaaaa'),
-// When the function is called with these inputs,
-// Then it should correctly count occurrences of `char`.
-
+// Given a string `str` and a character `char` that appears several times,
+// When the function is called,
+// Then it should correctly count each occurrence.
 test("should count multiple occurrences of a character", () => {
   const str = "aaaaa";
   const char = "a";
@@ -17,8 +12,46 @@ test("should count multiple occurrences of a character", () => {
   expect(count).toEqual(5);
 });
 
+// Scenario: Single Occurrence
+// Given a string containing exactly one match,
+// When the function is called,
+// Then it should return 1.
+test("should count a single occurrence of a character", () => {
+  const str = "banana";
+  const char = "n";
+  const count = countChar(str, char);
+  expect(count).toEqual(2);
+});
+
 // Scenario: No Occurrences
-// Given the input string `str`,
-// And a character `char` that does not exist within `str`.
-// When the function is called with these inputs,
-// Then it should return 0, indicating that no occurrences of `char` were found.
+// Given a string with no matching character,
+// When the function is called,
+// Then it should return 0.
+test("should return 0 when the character does not occur", () => {
+  const str = "hello";
+  const char = "z";
+  const count = countChar(str, char);
+  expect(count).toEqual(0);
+});
+
+// Edge case: Empty String
+// Given an empty string,
+// When the function is called with any character,
+// Then it should return 0.
+test("should return 0 for an empty string", () => {
+  const str = "";
+  const char = "a";
+  const count = countChar(str, char);
+  expect(count).toEqual(0);
+});
+
+// Edge case: Character at start and end
+// Given a string where the character appears at both ends,
+// When the function is called,
+// Then it should count both occurrences.
+test("should count characters at the start and end of the string", () => {
+  const str = "ahelloa";
+  const char = "a";
+  const count = countChar(str, char);
+  expect(count).toEqual(2);
+});
