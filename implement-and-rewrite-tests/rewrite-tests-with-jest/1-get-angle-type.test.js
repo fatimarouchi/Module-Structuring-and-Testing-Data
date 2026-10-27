@@ -7,7 +7,9 @@ import { getAngleType } from "../implement/1-get-angle-type.js";
 test(`should return "Acute angle" when (0 < angle < 90)`, () => {
   // Test various acute angles, including boundary cases
   expect(getAngleType(1)).toEqual("Acute angle");
+  expect(getAngleType(0.5)).toEqual("Acute angle");
   expect(getAngleType(45)).toEqual("Acute angle");
+  expect(getAngleType(89.5)).toEqual("Acute angle");
   expect(getAngleType(89)).toEqual("Acute angle");
 });
 
@@ -17,8 +19,10 @@ test('should return "right angle" when angle is 90', () => {
 });
 // Case 3: Obtuse angles
 test('should return "Obtuse angle" when (90 < angle < 180)', () => {
+  expect(getAngleType(90.5)).toEqual("Obtuse angle");
   expect(getAngleType(91)).toEqual("Obtuse angle");
   expect(getAngleType(120)).toEqual("Obtuse angle");
+  expect(getAngleType(179.5)).toEqual("Obtuse angle");
   expect(getAngleType(179)).toEqual("Obtuse angle");
 });
 // Case 4: Straight angle
@@ -27,8 +31,10 @@ test('should return "Straight angle" when angle is 180', () => {
 });
 // Case 5: Reflex angles
 test('should return "Reflex angle" when (180 < angle < 360)', () => {
+  expect(getAngleType(180.5)).toEqual("Reflex angle");
   expect(getAngleType(181)).toEqual("Reflex angle");
   expect(getAngleType(270)).toEqual("Reflex angle");
+  expect(getAngleType(359.5)).toEqual("Reflex angle");
   expect(getAngleType(359)).toEqual("Reflex angle");
 });
 // Case 6: Invalid angles
