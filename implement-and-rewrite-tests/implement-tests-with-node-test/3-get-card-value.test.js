@@ -29,7 +29,20 @@ test("Returns the correct value for every valid rank and suit", () => {
 });
 
 test("Throws an error for invalid card formats", () => {
-  const invalidCards = ["A", "invalid", "1♠", "11♠", "02♠", "2.5♠", " 2♠", "A?", ""];
+  const invalidCards = [
+    "A",
+    "invalid",
+    "1♠",
+    "11♠",
+    "02♠",
+    "0x02♦",
+    "2.1♦",
+    "0002♦",
+    "2.5♠",
+    " 2♠",
+    "A?",
+    "",
+  ];
 
   for (const card of invalidCards) {
     assert.throws(() => getCardValue(card), {
