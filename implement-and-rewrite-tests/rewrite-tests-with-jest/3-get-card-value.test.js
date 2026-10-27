@@ -1,27 +1,28 @@
 import { getCardValue } from "../implement/3-get-card-value.js";
 
-test("Returns the correct value for every valid rank and suit", () => {
-  const expectedValues = {
-    A: 11,
-    2: 2,
-    3: 3,
-    4: 4,
-    5: 5,
-    6: 6,
-    7: 7,
-    8: 8,
-    9: 9,
-    10: 10,
-    J: 10,
-    Q: 10,
-    K: 10,
-  };
+test("Returns the value of number cards from 2 to 10", () => {
   const suits = ["♠", "♥", "♦", "♣"];
 
-  for (const [rank, value] of Object.entries(expectedValues)) {
+  for (let rank = 2; rank <= 10; rank += 1) {
     for (const suit of suits) {
-      expect(getCardValue(`${rank}${suit}`)).toEqual(value);
+      expect(getCardValue(`${rank}${suit}`)).toEqual(rank);
     }
+  }
+});
+
+test("Returns 10 for face cards", () => {
+  const suits = ["♠", "♥", "♦", "♣"];
+
+  for (const rank of ["J", "Q", "K"]) {
+    for (const suit of suits) {
+      expect(getCardValue(`${rank}${suit}`)).toEqual(10);
+    }
+  }
+});
+
+test("Returns 11 for aces", () => {
+  for (const suit of ["♠", "♥", "♦", "♣"]) {
+    expect(getCardValue(`A${suit}`)).toEqual(11);
   }
 });
 
